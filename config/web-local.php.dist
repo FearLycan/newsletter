@@ -1,0 +1,45 @@
+<?php
+
+$db = require __DIR__ . '/db-local.php';
+
+ return [
+     'components' => [
+         'request' => [
+             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
+             'cookieValidationKey' => '9CaH5fYGC7aZps5Tyf3N4FdQaJ7df1PiYhS9wa05DoLac',
+         ],
+        /*'mailer' => [
+             'class' => 'yii\swiftmailer\Mailer',
+             'useFileTransport' => false,
+             'transport' => [
+                 'class' => 'Swift_SmtpTransport',
+                 'host' => 'mail11.mydevil.net',
+                 'username' => 'mail@dbronczyk.pl',
+                 'password' => 'fiXzKktr64xL0iPDhki3',
+                 'port' => '465',
+                 'encryption' => 'ssl',
+             ],
+         ],*/
+         'mailer' => [
+             'class' => 'yii\swiftmailer\Mailer',
+             'useFileTransport' => false,
+             'transport' => [
+                 'class' => 'Swift_SmtpTransport',
+                 'host' => '',
+                 'username' => '',
+                 'password' => '',
+                 'port' => '587',
+                 'encryption' => 'tls',
+                 'streamOptions' => [
+                     'ssl' => [
+                         'allow_self_signed' => true,
+                         'verify_peer' => false,
+                         'verify_peer_name' => false,
+                     ],
+                 ],
+             ],
+         ],
+
+         'db' => $db,
+     ],
+ ];
