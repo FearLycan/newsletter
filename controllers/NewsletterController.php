@@ -19,7 +19,7 @@ class NewsletterController extends Controller
         $model = new NewsletterForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
+            $model->send();
             Yii::$app->session->setFlash('success', "Your newsletter was send to " . $model->to);
 
             return $this->redirect(['index']);
